@@ -3,13 +3,15 @@ package de.lanalda.suff.curve.client;
 import de.lanalda.suff.curve.common.Player;
 import de.lanalda.suff.curve.common.Vector2D;
 
+import java.awt.*;
+
 public class LocalPlayer extends Player {
 	
 	private Vector2D direction;
 	private boolean right, left;
 	
 	public LocalPlayer(Client client) {
-		super(new Vector2D(100, 100), "joo");
+		super(new Vector2D(100, 100), "joo", Color.CYAN.getRGB());
 		this.direction = new Vector2D(5, 0);
 	}
 
@@ -19,9 +21,9 @@ public class LocalPlayer extends Player {
 		
 		float rot = 0;
 		if (right)
-			rot += 5;
+			rot += 8;
 		if (left)
-			rot -= 5;
+			rot -= 8;
 		
 		this.direction.rotate(rot);
 	}

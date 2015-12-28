@@ -1,5 +1,6 @@
 package de.lanalda.suff.curve.net;
 
+import java.awt.*;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -58,7 +59,7 @@ public class Server{
 	public String register()
 	{
 		ident ++;
-		playerRegistry.register(new Player(new Vector2D((int) Math.random()*100, (int) Math.random()*100), String.valueOf(ident)));
+		playerRegistry.register(new Player(new Vector2D((int) Math.random()*100, (int) Math.random()*100), String.valueOf(ident), Color.CYAN.getRGB()));
 		return String.valueOf(ident);
 	}
 

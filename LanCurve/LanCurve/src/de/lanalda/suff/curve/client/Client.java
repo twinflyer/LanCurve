@@ -3,7 +3,7 @@ package de.lanalda.suff.curve.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import de.lanalda.suff.curve.common.Vector2D;
 
@@ -31,6 +31,10 @@ public class Client {
 	}
 
 	private void setupFrame() {
+		String ip = JOptionPane.showInputDialog(null, "Gib die IP ein");
+		String name = JOptionPane.showInputDialog(null, "Gib name ein");
+
+
 		this.panel = new Panel(this);
 
 		this.frame = new JFrame("LanCurve");
@@ -40,6 +44,7 @@ public class Client {
 		this.frame.setVisible(true);
 		this.frame.setIgnoreRepaint(true);
 		this.frame.add(this.panel);
+		this.panel.requestFocus();
 	}
 
 	private void startGameLoop() {
@@ -62,23 +67,22 @@ public class Client {
 
 	public void act() {
 
-		checkCollision();
-		
-		localPlayer.act();
+		if(!checkCollision())
+		{
+			localPlayer.act();
+		}
 
 		// redraw frame
 		this.panel.draw();
 	}
 
-	private void checkCollision() {
+	private boolean checkCollision() {
 		Vector2D colCheckPos = new Vector2D(localPlayer.getPosition());
 		Vector2D direction = new Vector2D(localPlayer.getDirection());
-		direction.multiply(1.2);
+		direction.multiply(1.25);
 		colCheckPos.add(direction);
 		
-		if (this.panel.isObstructed(colCheckPos)) {
-			System.out.println("collide");
-		}
+		return this.panel.isObstructed(colCheckPos);
 	}
 
 	public LocalPlayer getLocalPlayer() {

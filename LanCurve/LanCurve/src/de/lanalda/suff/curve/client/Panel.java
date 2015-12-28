@@ -120,7 +120,7 @@ public class Panel extends Canvas {
 	}
 
 	private void drawPlayer(Player player) {
-		g2d.setColor(Color.white);
+		g2d.setColor(new Color(player.getColor()));
 		g2d.fillOval((int) (player.getPosition().x - 5),
 				(int) (player.getPosition().y - 5), 10, 10);
 	}
