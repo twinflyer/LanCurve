@@ -19,48 +19,41 @@ import de.lanalda.suff.curve.common.Vector2D;
 public class Server{
 
 	private Gson gson;
-	private PlayerRegistry playerRegistry;
-	static int ident = 0;
+	static PlayerRegistry playerRegistry = new PlayerRegistry();
 	
 	
 	public Server()
 	{
 		this.gson = new Gson();
-		this.playerRegistry = new PlayerRegistry();
 	}
 	
 	@Path("players")
 	@GET
-	@Produces("plain/text")
+	@Produces("text/plain")
 	public String getPlayers()
 	{
 		return gson.toJson(playerRegistry.getPlayers());
 	}
 	
+	@Path("setposition")
 	@GET
-	@Produces("plain/text")
-	public String getPositionOf(@QueryParam("player")String id)
+	@Produces("text/plain")
+	public String setPositionOf(@QueryParam("name") String name, @QueryParam("x") String x, @QueryParam("y") String y)
 	{
-		return gson.toJson(playerRegistry.getPlayerById(id));
-	}
-	
-	@POST
-	@Consumes("plain/text")
-	public void setPositionOf(String in)
-	{
-		String[] array = in.split(",");
-		Vector2D pos = new Vector2D(Integer.getInteger(array[1]), Integer.getInteger(array[2]));
-		playerRegistry.getPlayerById(array[0]).setPosition(pos);
+		Vector2D pos = new Vector2D(Double.parseDouble(x), Double.parseDouble(y));
+		playerRegistry.getPlayerById(name).setPosition(pos);
+		
+		return "Position gesetzt";
 	}
 	
 	@Path("register")
 	@GET
-	@Produces("plain/text")
-	public String register()
+	@Produces("text/plain")
+	public String register(@QueryParam("name") String name)
 	{
-		ident ++;
-		playerRegistry.register(new Player(new Vector2D((int) Math.random()*100, (int) Math.random()*100), String.valueOf(ident), Color.CYAN.getRGB()));
-		return String.valueOf(ident);
+		Color color = new Color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+		playerRegistry.register(new Player(new Vector2D((int) Math.random()*100, (int) Math.random()*100), name, color.getRGB()));
+		return String.valueOf(color.getRGB());
 	}
 
 }

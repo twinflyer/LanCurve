@@ -19,7 +19,7 @@ public class PlayerRegistry {
 	public void register(Player player)
 	{
 		checkNotNull(player, "player mustn't be null");
-		if(!players.containsValue(player)){
+		if(!players.containsKey(player.getId())){
 			players.put(player.getId(), player);
 		}
 	}

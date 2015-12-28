@@ -5,7 +5,7 @@ public class Vector2D {
 	public double x;
 	public double y;
 	
-	public Vector2D(int xPos, int yPos) {
+	public Vector2D(double xPos, double yPos) {
 		this.x = xPos;
 		this.y = yPos;
 	}
@@ -19,7 +19,7 @@ public class Vector2D {
 		return x;
 	}
 
-	public void setxPos(int xPos) {
+	public void setxPos(double xPos) {
 		this.x = xPos;
 	}
 
@@ -27,7 +27,7 @@ public class Vector2D {
 		return y;
 	}
 
-	public void setyPos(int yPos) {
+	public void setyPos(double yPos) {
 		this.y = yPos;
 	}
 
