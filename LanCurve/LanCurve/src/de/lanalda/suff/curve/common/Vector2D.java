@@ -36,6 +36,13 @@ public class Vector2D {
 		this.y += direction.y;
 		return this;
 	}
+
+	public Vector2D multiply(double multiplier)
+	{
+		this.x *= multiplier;
+		this.y *= multiplier;
+		return this;
+	}
 	
 	public void rotate(float angle) {
 		double theta = Math.toRadians(angle);

@@ -1,6 +1,7 @@
 package de.lanalda.suff.cuve.client;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -10,7 +11,7 @@ public class Client {
 
 	private JFrame frame;
 	private LocalPlayer localPlayer;
-	private ArrayList<RemotePlayer> remotePlayers;
+	private List<RemotePlayer> remotePlayers;
 	private Panel panel;
 
 	public Panel getPanel() {
@@ -71,7 +72,9 @@ public class Client {
 
 	private void checkCollision() {
 		Vector2D colCheckPos = new Vector2D(localPlayer.getPosition());
-		colCheckPos.add(localPlayer.getDirection());
+		Vector2D direction = new Vector2D(localPlayer.getDirection());
+		direction.multiply(1.2);
+		colCheckPos.add(direction);
 		
 		if (this.panel.isObstructed(colCheckPos)) {
 			System.out.println("collide");
@@ -82,7 +85,7 @@ public class Client {
 		return this.localPlayer;
 	}
 
-	public ArrayList<RemotePlayer> getRemotePlayers() {
+	public List<RemotePlayer> getRemotePlayers() {
 		return this.remotePlayers;
 	}
 
