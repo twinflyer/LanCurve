@@ -1,0 +1,12 @@
+package de.lanalda.suff.cuve.client;
+
+import de.lanalda.suff.curve.common.Player;
+import de.lanalda.suff.curve.common.Position;
+
+public class RemotePlayer extends Player {
+	
+	public RemotePlayer() {
+		super(new Position(300, 300), "remote");
+	}
+
+}

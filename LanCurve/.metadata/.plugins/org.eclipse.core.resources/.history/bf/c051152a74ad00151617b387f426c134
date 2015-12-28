@@ -1,0 +1,12 @@
+package de.lanalda.suff.cuve.client;
+
+import de.lanalda.suff.curve.common.Player;
+import de.lanalda.suff.curve.common.Position;
+
+public class LocalPlayer extends Player {
+	
+	public LocalPlayer() {
+		super(new Position(100, 100), "joo");
+	}
+
+}

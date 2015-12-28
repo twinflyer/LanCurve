@@ -1,0 +1,11 @@
+package de.lanalda.suff.cuve.client;
+
+public class Client {
+	
+	private JFrame frame;
+	
+	public Client() {
+		
+	}
+
+}

@@ -1,0 +1,6 @@
+1451311613465	Delete element
+1451315013969	Rename type 'Position'
+1451315474461	Rename field 'xPos'
+1451315477917	Rename field 'yPos'
+1451316106186	Encapsulate field 'left'
+1451316120377	Encapsulate field 'right'

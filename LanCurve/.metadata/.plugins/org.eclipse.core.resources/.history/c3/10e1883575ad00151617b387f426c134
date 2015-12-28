@@ -1,0 +1,46 @@
+package de.lanalda.suff.curve.common;
+
+public class Vector2D {
+	
+	public int xPos;
+	public int yPos;
+	
+	public Vector2D(int xPos, int yPos) {
+		this.xPos = xPos;
+		this.yPos = yPos;
+	}
+
+	public int getxPos() {
+		return xPos;
+	}
+
+	public void setxPos(int xPos) {
+		this.xPos = xPos;
+	}
+
+	public int getyPos() {
+		return yPos;
+	}
+
+	public void setyPos(int yPos) {
+		this.yPos = yPos;
+	}
+
+	public void add(Vector2D direction) {
+		this.xPos += direction.xPos;
+		this.yPos += direction.yPos;
+	}
+	
+	public void rotate(float angle) {
+		double theta = Math.toRadians(angle);
+
+		double cs = Math.cos(theta);
+		double sn = Math.sin(theta);
+
+		px = x * cs - y * sn; 
+		py = x * sn + y * cs;
+	}
+	
+	
+
+}

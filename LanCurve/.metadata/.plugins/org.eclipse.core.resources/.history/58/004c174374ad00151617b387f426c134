@@ -1,0 +1,14 @@
+package de.lanalda.suff.cuve.client;
+
+import de.lanalda.suff.curve.common.Player;
+import de.lanalda.suff.curve.common.Vector2D;
+
+public class LocalPlayer extends Player {
+	
+	private Vector2D direction;
+	
+	public LocalPlayer() {
+		super(new Vector2D(100, 100), "joo");
+	}
+
+}

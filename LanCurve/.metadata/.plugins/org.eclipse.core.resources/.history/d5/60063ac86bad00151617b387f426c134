@@ -1,0 +1,8 @@
+package de.lanalda.suff.cuve.client;
+
+public class Client {
+	
+	public Client() {
+	}
+
+}

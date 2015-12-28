@@ -1,0 +1,21 @@
+package de.lanalda.suff.cuve.client;
+
+import javax.swing.JFrame;
+
+public class Client {
+	
+	private JFrame frame;
+	
+	public Client() {
+		setupFrame();
+	}
+	
+	private void setupFrame() {
+		this.frame = new JFrame();
+		this.frame.setSize(1920, 1080);
+		this.frame.setLocationRelativeTo(null);
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setVisible(true);
+	}
+
+}

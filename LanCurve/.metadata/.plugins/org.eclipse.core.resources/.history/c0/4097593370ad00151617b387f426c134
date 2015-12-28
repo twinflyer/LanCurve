@@ -1,0 +1,10 @@
+package de.lanalda.suff.cuve.client;
+
+import de.lanalda.suff.curve.common.Player;
+
+public class LocalPlayer extends Player {
+	
+	public LocalPlayer() {
+	}
+
+}

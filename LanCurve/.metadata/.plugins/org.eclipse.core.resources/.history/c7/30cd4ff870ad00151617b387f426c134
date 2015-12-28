@@ -1,0 +1,43 @@
+package de.lanalda.suff.cuve.client;
+
+import java.awt.List;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+
+import de.lanalda.suff.curve.common.Player;
+
+public class Client {
+	
+	private JFrame frame;
+	private LocalPlayer localPlayer;
+	private ArrayList<RemotePlayer> remotePlayers;
+	
+	public Client() {
+		setupFrame();
+		this.localPlayer = new LocalPlayer();
+		this.remotePlayers = new ArrayList<RemotePlayer>();
+	}
+	
+	private void setupFrame() {
+		this.frame = new JFrame("LanCurve");
+		this.frame.setSize(1000, 800);
+		this.frame.setLocationRelativeTo(null);
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setVisible(true);
+		this.frame.add(new Panel(this));
+	}
+	
+	public Player getLocalPlayer() {
+		return this.localPlayer;
+	}
+	
+	public ArrayList<RemotePlayer> getRemotePlayers() {
+		return this.remotePlayers;
+	}
+	
+	public static void main(String[] args) {
+		new Client();
+	}
+
+}

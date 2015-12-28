@@ -1,0 +1,34 @@
+package de.lanalda.suff.cuve.client;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+import de.lanalda.suff.curve.common.Player;
+
+public class Panel extends JPanel {
+	
+	private static final long serialVersionUID = 1L;
+	private Client client;
+
+	public Panel(Client client) {
+		super();
+		this.client = client;
+		this.setBackground(Color.black);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		drawPlayer(this.client.getLocalPlayer(), g);
+		for (Player p : this.client.getRemotePlayers()) {
+			drawPlayer(p, g);
+		}
+	}
+	
+	private void drawPlayer(Player player, Graphics g) {
+		g.drawOval(player.getPosition().xPos - 5, player.getPosition().yPos-5, 10, 10);
+	}
+
+}

@@ -1,0 +1,121 @@
+package de.lanalda.suff.cuve.client;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+
+import de.lanalda.suff.curve.common.Player;
+
+public class Panel extends Canvas {
+
+	private static final long serialVersionUID = 1L;
+	private Client client;
+	private BufferedImage bi;
+
+	Graphics graphics = null;
+	Graphics2D g2d = null;
+	Color background = Color.BLACK;
+	private boolean initializedBufferStrategy;
+	
+	private final int rightKeyCode = KeyEvent.VK_RIGHT;
+	private final int leftKeyCode = KeyEvent.VK_LEFT;;
+
+	public Panel(Client client) {
+		super();
+
+		this.setIgnoreRepaint(true);
+
+		GraphicsEnvironment ge = GraphicsEnvironment
+				.getLocalGraphicsEnvironment();
+		GraphicsDevice gd = ge.getDefaultScreenDevice();
+		GraphicsConfiguration gc = gd.getDefaultConfiguration();
+
+		this.bi = gc.createCompatibleImage(1000, 800);
+
+		this.client = client;
+		this.setBackground(Color.black);
+		
+		this.initKeyListener();
+	}
+
+	public void draw() {
+		if (!this.initializedBufferStrategy) {
+			this.createBufferStrategy(2);
+			this.initializedBufferStrategy = true;
+		}
+		g2d = bi.createGraphics();
+
+		this.drawPlayers();
+
+		graphics = this.getBufferStrategy().getDrawGraphics();
+
+		graphics.drawImage(bi, 0, 0, null);
+
+		if (!this.getBufferStrategy().contentsLost())
+			this.getBufferStrategy().show();
+
+		// Let the OS have a little time...
+		Thread.yield();
+	}
+
+	private void initKeyListener() {
+		this.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case rightKeyCode:
+					client.getLocalPlayer().setRight(false);
+					break;
+				case leftKeyCode:
+					client.getLocalPlayer().setLeft(false);
+					break;
+				default:
+					break;
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case rightKeyCode:
+					client.getLocalPlayer().setRight(true);
+					break;
+				case leftKeyCode:
+					client.getLocalPlayer().setLeft(true);
+					break;
+				default:
+					break;
+				}
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+
+	private void drawPlayers() {
+		drawPlayer(this.client.getLocalPlayer());
+		for (Player p : this.client.getRemotePlayers()) {
+			drawPlayer(p);
+		}
+	}
+
+	private void drawPlayer(Player player) {
+		g2d.setColor(Color.white);
+		g2d.fillOval((int) (player.getPosition().x - 5),
+				(int) (player.getPosition().y - 5), 10, 10);
+	}
+
+}

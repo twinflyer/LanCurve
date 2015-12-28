@@ -1,0 +1,7 @@
+package de.lanalda.suff.cuve.client;
+
+import javax.swing.JPanel;
+
+public class Panel extends JPanel {
+
+}
