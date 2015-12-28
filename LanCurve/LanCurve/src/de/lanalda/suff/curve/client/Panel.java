@@ -1,4 +1,4 @@
-package de.lanalda.suff.cuve.client;
+package de.lanalda.suff.curve.client;
 
 import java.awt.Canvas;
 import java.awt.Color;

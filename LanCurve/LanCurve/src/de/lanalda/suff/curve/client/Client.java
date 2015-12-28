@@ -1,4 +1,4 @@
-package de.lanalda.suff.cuve.client;
+package de.lanalda.suff.curve.client;
 
 import java.util.ArrayList;
 import java.util.List;
