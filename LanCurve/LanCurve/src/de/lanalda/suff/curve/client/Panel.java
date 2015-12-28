@@ -114,8 +114,8 @@ public class Panel extends Canvas {
 
 	private void drawPlayers() {
 		drawPlayer(this.client.getLocalPlayer());
-		for (Player p : this.client.getRemotePlayers()) {
-			drawPlayer(p);
+		for (String id : this.client.getRemotePlayers().keySet()) {
+			drawPlayer(this.client.getRemotePlayers().get(id));
 		}
 	}
 

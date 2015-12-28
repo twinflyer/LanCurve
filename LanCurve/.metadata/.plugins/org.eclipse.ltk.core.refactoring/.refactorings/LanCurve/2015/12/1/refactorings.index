@@ -4,3 +4,8 @@
 1451315477917	Rename field 'yPos'
 1451316106186	Encapsulate field 'left'
 1451316120377	Encapsulate field 'right'
+1451339532004	Encapsulate field 'instance'
+1451343911936	Rename method 'updatePositionOf'
+1451344335019	Rename method 'startGameLoop'
+1451344337829	Rename method 'startGame'
+1451345071701	Extract local variable 'player'

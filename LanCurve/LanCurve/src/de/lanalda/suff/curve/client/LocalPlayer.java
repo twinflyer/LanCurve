@@ -10,14 +10,13 @@ public class LocalPlayer extends Player {
 	private Vector2D direction;
 	private boolean right, left;
 	
-	public LocalPlayer(Client client) {
-		super(new Vector2D(100, 100), "joo", Color.CYAN.getRGB());
+	public LocalPlayer(Client client, Color c, String name) {
+		super(new Vector2D(100, 100), name, c.getRGB());
 		this.direction = new Vector2D(5, 0);
+		ClientNetworking.getInstance().startPlayerUpdateThread(this);
 	}
 
 	public void act() {
-		
-		this.getPosition().add(direction);
 		
 		float rot = 0;
 		if (right)
@@ -26,6 +25,11 @@ public class LocalPlayer extends Player {
 			rot -= 8;
 		
 		this.direction.rotate(rot);
+		
+		this.getPosition().add(direction);
+		
+		//TODO send new pos to server
+		
 	}
 	
 	public Vector2D getDirection() {
